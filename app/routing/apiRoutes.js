@@ -1,11 +1,16 @@
 // const friends = require('../data/friends')
 const friends = require('../data/friends.json')
+const questions = require('../data/questions.js')
 const fs = require('fs')
 
 module.exports = app => {
     // GET data
     app.get('/friends', (req, res) => {
         res.json(friends)
+    })
+    // GET questions data
+    app.get('/questions', (req, res) => {
+        res.json(questions)
     })
 
     // POST user to dataset

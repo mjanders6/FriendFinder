@@ -20,32 +20,27 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email">
+                    placeholder="Name">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Link to Photo</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Photo Link">
             </div>
 
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </div>
+            <div id="questionSet"></div>
+
         </form>
 
         <hr class="my-4">
+
         <button type="submit" class="btn btn-primary" style="width:100%">Submit</button>
 
-
+        <div class="container">
+            <a href="/friends">API Friends List</a> | <a href="/#">Github Repo</a> | <a href="/#">Heroku Repo</a>
+        </div>
     </div>
 
+    <script src="./assets/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
