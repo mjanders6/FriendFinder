@@ -9,7 +9,7 @@ app.use(express.static(join(__dirname, './app/public')))
 app.use(express.urlencoded({extend: true}))
 app.use(express.json())
 
-// require('./routes/apiRoute') (app)
+require('./app/routing/apiRoutes') (app)
 
 // routes(app)
 
