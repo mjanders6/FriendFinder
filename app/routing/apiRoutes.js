@@ -1,4 +1,3 @@
-// const friends = require('../data/friends')
 const friends = require('../data/friends.json')
 const questions = require('../data/questions.js')
 const fs = require('fs')
