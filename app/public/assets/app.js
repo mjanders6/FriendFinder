@@ -5,7 +5,10 @@ const getQuestions = _ => {
     fetch('/questions')
         .then(r => r.json())
         .then(questions => {
+            document.querySelector('#userName').innerHTML = ''
+            document.querySelector('#photoLink').innerHTML = ''
             document.querySelector('#questionSet').innerHTML = ''
+
             questions.forEach(({ Q }, index) => {
                 let qDiv = document.createElement('div')
                 qDiv.innerHTML = `
@@ -26,20 +29,20 @@ const getQuestions = _ => {
         .catch(e => console.error(e))
 }
 
+// selects the value from the drop down
 const getResults = _ => {
-    // console.log(questionSet.querySelectorAll('.qOption'))
-    // console.log(questionSet.querySelectorAll('.qOption').length)
     let answerSel = questionSet.querySelectorAll('.qOption')
     let answerArry = []
     answerSel.forEach(selection => {
         answerArry.push(selection.selectedIndex)
     })
     return answerArry
-
 }
 
+// submit the survey
 document.querySelector('#submit').addEventListener('click', e => {
     e.preventDefault()
+    // use the friends route
     fetch('/friends', {
         method: 'POST',
         headers: {
@@ -51,12 +54,10 @@ document.querySelector('#submit').addEventListener('click', e => {
             scores: getResults()
         })
     })
-    .then(_ => {
-        alert('Friend Added')
-        getQuestions()
-    })
-    .catch(e => console.error(e))
+        .then(_ => {
+            getQuestions()
+        })
+        .catch(e => console.error(e))
 })
-
 
 getQuestions()

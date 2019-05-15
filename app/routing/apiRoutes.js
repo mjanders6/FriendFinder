@@ -14,13 +14,30 @@ module.exports = app => {
 
     // POST user to dataset
     app.post('/friends', (req, res) => {
-        // testing out response
-        // res.send(req.body)
-        let newFriend = req.body
-        friends.push(newFriend)
+
+        let addedFriend = req.body
+        let scoreArry = []
+        
+        // loop through the friends array to compare to the newly added friend
+        for (let i = 0; i < friends.length; i++) {
+            let total = 0
+            let friendScores = friends[i].scores
+            let friendName = friends[i].name
+            // compare the arrays
+            friendScores.forEach((score, index) => {
+                total += Math.abs(parseInt(score) - parseInt(addedFriend.scores[index]))
+            })
+            // save the scores in an array
+            scoreArry[i] = { friendName, total }
+        }
+        // sort the array
+        scoreArry.sort((a, b) => {
+            return a.total - b.total
+        })
+        friends.push(addedFriend)
+
         res.send('New friend added')
-        console.log(friends)
-        // save the friends to s .json file. 
+        // save the friends to a .json file. 
         fs.writeFile('./app/data/friends.json', JSON.stringify(friends), 'utf8', e => e ? console.log(e) : console.log('success'))
     })
 
