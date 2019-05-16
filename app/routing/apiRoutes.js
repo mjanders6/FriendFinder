@@ -35,10 +35,10 @@ module.exports = app => {
             return a.total - b.total
         })
         friends.push(addedFriend)
-
-        res.send('New friend added')
+        res.json(scoreArry)
+        // res.send(scoreArry[0].friendName)
         // save the friends to a .json file. 
-        fs.writeFile('./app/data/friends.json', JSON.stringify(friends), 'utf8', e => e ? console.log(e) : console.log('success'))
+        // fs.writeFile('./app/data/friends.json', JSON.stringify(friends), 'utf8', e => e ? console.log(e) : console.log('success'))
     })
 
 }

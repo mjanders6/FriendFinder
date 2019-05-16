@@ -54,7 +54,33 @@ document.querySelector('#submit').addEventListener('click', e => {
             scores: getResults()
         })
     })
-        .then(_ => {
+        .then(r => r.json())
+        .then( r => {
+            console.log(r)
+            // alert(r[0].friendName)
+            let match = r[0].friendName
+            let modalDiv = document.createElement('div')
+            modalDiv.createElement =  `
+                <div class="modal" tabindex="-1" role="dialog" id='myModal'>
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        <p>${match}</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                `
+            document.querySelector('#questionSet').append(modalDiv)
             getQuestions()
         })
         .catch(e => console.error(e))
