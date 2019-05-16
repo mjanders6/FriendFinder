@@ -60,30 +60,13 @@ document.querySelector('#submit').addEventListener('click', e => {
             // alert(r[0].friendName)
             let match = r[0].friendName
             let modalDiv = document.createElement('div')
-            modalDiv.createElement =  `
-                <div class="modal" tabindex="-1" role="dialog" id='myModal'>
-                    <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title">Here is your match!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                        <p>${match}</p>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                `
-            document.querySelector('#questionSet').append(modalDiv)
+            modalDiv.innerHTML =  `<p>Your best match is: ${match}</p>`
+
+            document.querySelector('#match').append(modalDiv)
+
             getQuestions()
         })
         .catch(e => console.error(e))
-})
-
+    })
+    
 getQuestions()
